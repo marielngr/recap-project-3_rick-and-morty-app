@@ -21,9 +21,6 @@ export function CharacterCard(props) {
   </dl>
 </div>
   `;
-  cardContainer.append(card);
 
   return card;
 }
-
-CharacterCard();
