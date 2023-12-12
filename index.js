@@ -65,6 +65,8 @@ async function getCharacters(page) {
   });
 }
 
-getCharacters(page);
-
-//später muss pagecounter aktuelle page und maxpage anzeigen
+searchBar.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const elements = event.target.elements;
+  console.log(event.target);
+});
