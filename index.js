@@ -15,8 +15,6 @@ let maxPage = 1;
 let page = 1;
 let searchQuery = "";
 
-//info: 42 Seiten
-
 async function fetchCharacters() {
   try {
     const response = await fetch(
@@ -40,7 +38,7 @@ prevButton.addEventListener("click", () => {
   if (page > 1) {
     page = page - 1;
   }
-  pagination.textContent = page + "/" + maxPage;
+
   getCharacters();
 });
 
@@ -48,7 +46,7 @@ nextButton.addEventListener("click", () => {
   if (page < maxPage) {
     page = page + 1;
   }
-  pagination.textContent = page + "/" + maxPage;
+
   getCharacters();
 });
 
@@ -61,12 +59,14 @@ async function getCharacters() {
   characters.forEach((character) => {
     const card = CharacterCard(character);
     cardContainer.append(card);
+
+    pagination.textContent = page + "/" + maxPage;
   });
 }
 
 searchBar.addEventListener("submit", (event) => {
   event.preventDefault();
-
+  page = 1;
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData);
   console.log(data);
