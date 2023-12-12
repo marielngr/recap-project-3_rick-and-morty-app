@@ -17,7 +17,7 @@ export function CharacterCard(props) {
     <dt class="card__info-title">Type</dt>
     <dd class="card__info-description">${props.type}</dd>
     <dt class="card__info-title">Occurrences</dt>
-    <dd class="card__info-description">${props.episode}</dd>
+    <dd class="card__info-description">${props.episode.lenght}</dd>
   </dl>
 </div>
   `;
