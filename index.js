@@ -18,6 +18,7 @@ const searchQuery = "";
 //info: 42 Seiten
 
 async function fetchCharacters(page) {
+  cardContainer.innerHTML = ``;
   try {
     const response = await fetch(
       `https://rickandmortyapi.com/api/character?page=${page}`
@@ -32,19 +33,19 @@ async function fetchCharacters(page) {
   }
 }
 
-// const characters = await fetchCharacters(page);
-// console.log(characters);
-
-// characters.forEach((character) => {
-//   const card = CharacterCard(character);
-//   cardContainer.append(card);
-// });
-
 //jetzt Event-Listener mit if else, wenn werte <0 oder >42 wieder auf 1 bzw 42 setzen
 // nicht vergessen Inhalt leeren mit innerHTML und leerem string, vor Aufruf von getCharacters, sonst pappt alles untereinander
 // - it is prevented that the page index could go higher than the max page index or below 1
 // - the page index is increased / decreased
-// - the `fetchCharacters` function is called
+
+// nextButton.addEventListener("click", getCharacters(page), console.log("hello"));
+
+nextButton.addEventListener("click", () => {
+  getCharacters(page);
+  page = page + 1;
+  pagination.textContent = page + "/" + maxPage;
+  console.log("hello");
+});
 
 async function getCharacters(page) {
   const characters = await fetchCharacters(page);
@@ -57,3 +58,5 @@ async function getCharacters(page) {
 }
 
 getCharacters(page);
+
+//später muss pagecounter aktuelle page und maxpage anzeigen
